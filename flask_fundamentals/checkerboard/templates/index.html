@@ -1,0 +1,47 @@
+<head>
+<style>
+#container{
+	height:1000px;
+	width:900px;
+	background-color: white;
+	margin:0 auto;
+	padding-top: 50px;
+}
+table, td {
+    border: 1px solid black;
+}
+td, tr{
+	height:20px;
+	width:20px;
+}
+.color1{
+	background-color: black;
+}
+.color2{
+	background-color: lightgrey;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+    	<h1>Checkerboard!</h1>
+    	<table>
+    	{% for i in range(x): %}
+    		<tr>
+    			{% for j in range(y) %}
+    			<td class='color1'></td>
+    			<td class='color2'></td>
+    			{% endfor %}
+    		</tr>
+    		<tr>
+    			{% for j in range(y) %}
+    			<td class='color2'></td>
+    			<td class='color1'></td>
+    			{% endfor %}
+    		</tr>
+    	{% endfor %}
+    	</table>
+    	
+
+    </div>
+</body>

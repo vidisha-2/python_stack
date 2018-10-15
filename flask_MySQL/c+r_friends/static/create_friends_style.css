@@ -1,0 +1,40 @@
+*{
+	margin:0;
+}
+
+#container {
+height:600px;
+width:500px;
+margin:0 auto;
+background-color:#8bc34a;
+}
+
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.h2, h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+@app.route('/create_user', methods=['POST'])
+def create():
+    mysql = connectToMySQL("lead_gen_business")
+    query = "INSERT INTO friends (first_name, last_name, occupation, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(occupation)s, NOW(), NOW());"
+    data = {
+             'first_name': request.form['first_name'],
+             'last_name':  request.form['last_name'],
+             'occupation': request.form['occupation']
+           }
+    new_friend_id = mysql.query_db(query, data)
+    return redirect('/')

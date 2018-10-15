@@ -1,0 +1,179 @@
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.dojo_ninjas.models import *
+>>> dojo_one = Dojos.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+>>> dojo_two = Dojos.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+>>> dojo_three = Dojos.objects.create(name="CodingDojo New York", city="New York", state="NY")
+>>> all_dojos = Dojos.objects.all()
+>>> print(all_dojos)
+<QuerySet [<Dojo object: CodingDojo Silicon Valley Mountain View CA>, <Dojo object: CodingDojo Seattle Seat
+tle WA>, <Dojo object: CodingDojo New York New York NY>]>
+>>> Dojos.objects.get(id=1).delete()
+(1, {'dojo_ninjas.Ninjas': 0, 'dojo_ninjas.Dojos': 1})
+>>> Dojos.objects.get(id=2).delete()
+(1, {'dojo_ninjas.Ninjas': 0, 'dojo_ninjas.Dojos': 1})
+>>> Dojos.objects.get(id=3).delete()
+(1, {'dojo_ninjas.Ninjas': 0, 'dojo_ninjas.Dojos': 1})
+>>> print(Dojos.objects.all())
+<QuerySet []>
+>>> dojo_one = Dojos.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+>>> dojo_two = Dojos.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+>>> dojo_three = Dojos.objects.create(name="CodingDojo New York", city="New York", state="NY")
+>>> print(Dojos.objects.all())
+<QuerySet [<Dojo object: CodingDojo Silicon Valley Mountain View CA>, <Dojo object: CodingDojo Seattle Seat
+tle WA>, <Dojo object: CodingDojo New York New York NY>]>
+>>> ninja_one = Ninjas.objects.create(first_name="Louis", last_name="Pasteur", dojo= Dojos.objects.get(id=1
+))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line 85,
+in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 379, i
+n get
+    self.model._meta.object_name
+apps.dojo_ninjas.models.DoesNotExist: Dojos matching query does not exist.
+>>> dojo_one = Dojos.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line 85,
+in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 379, i
+n get
+    self.model._meta.object_name
+apps.dojo_ninjas.models.DoesNotExist: Dojos matching query does not exist.
+>>> i_d = Dojos.objects.get(pk=this_object_id)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'this_object_id' is not defined
+>>> dojo_one = Dojos.objects.all()
+>>> print(dojo_one)
+<QuerySet [<Dojo object: CodingDojo Silicon Valley Mountain View CA>, <Dojo object: CodingDojo Seattle Sea
+ttle WA>, <Dojo object: CodingDojo New York New York NY>]>
+>>> print(dojo_one.id)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'id'
+>>> ninja_one = Ninjas.objects.create(first_name="Louis", last_name="Pasteur", dojo= Dojos.objects.first()
+)
+>>> ninja_two = Ninjas.objects.create(first_name="Marie", last_name="Curie", dojo= Dojos.objects.first())
+>>> ninja_three = Ninjas.objects.create(first_name="Thomas", last_name="Edison", dojo= Dojos.objects.first
+())
+>>> ninja_four = Ninjas.objects.create(first_name="Bob", last_name="Marley", dojo= Dojos.objects.get(city=
+"Seattle"))
+>>> ninja_five = Ninjas.objects.create(first_name="Elvis", last_name="Presley", dojo= Dojos.objects.get(ci
+ty="Seattle"))
+>>> ninja_six = Ninjas.objects.create(first_name="Peter", last_name="Coug", dojo= Dojos.objects.get(city="
+Seattle"))
+>>> ninja_seven = Ninjas.objects.create(first_name="Neet", last_name="Calid", dojo= Dojos.objects.last())
+>>> ninja_eight = Ninjas.objects.create(first_name="Harpreet", last_name="moidwel", dojo= Dojos.objects.la
+st())
+>>> ninja_nine = Ninjas.objects.create(first_name="Leia", last_name="numik", dojo= Dojos.objects.last())
+>>> get_ninja = Ninjas.objects.filter(dojo=Dojos.objects.first())
+>>> print(get_ninja)
+<QuerySet [<Ninja object: Louis Pasteur Dojos object>, <Ninja object: Marie Curie Dojos object>, <Ninja ob
+ject: Thomas Edison Dojos object>]>
+>>> get_ninja = Ninjas.objects.filter(dojo=Dojos.objects.last()))
+  File "<console>", line 1
+    get_ninja = Ninjas.objects.filter(dojo=Dojos.objects.last()))
+                                                                ^
+SyntaxError: invalid syntax
+>>> get_ninja = Ninjas.objects.filter(dojo=Dojos.objects.last())
+>>> print(get_ninja)
+<QuerySet [<Ninja object: Neet Calid Dojos object>, <Ninja object: Harpreet moidwel Dojos object>, <Ninja
+object: Leia numik Dojos object>]>
+>>> ^Z
+
+now exiting InteractiveConsole...
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/dojoninjas
+$ python manage.py migrations
+Unknown command: 'migrations'
+Type 'manage.py help' for usage.
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/dojoninjas
+$ python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojos without a default; we can't do that (the databa
+se needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> ^Z
+Traceback (most recent call last):
+  File "manage.py", line 22, in <module>
+    execute_from_command_line(sys.argv)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\core\management\__init__.py", l
+ine 363, in execute_from_command_line
+    utility.execute()
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\core\management\__init__.py", l
+ine 355, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\core\management\base.py", line
+283, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\core\management\base.py", line
+330, in execute
+    output = self.handle(*args, **options)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\core\management\commands\makemi
+grations.py", line 177, in handle
+    migration_name=self.migration_name,
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\migrations\autodetector.py",
+ line 47, in changes
+    changes = self._detect_changes(convert_apps, graph)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\migrations\autodetector.py",
+ line 188, in _detect_changes
+    self.generate_added_fields()
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\migrations\autodetector.py",
+ line 827, in generate_added_fields
+    self._generate_added_field(app_label, model_name, field_name)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\migrations\autodetector.py",
+ line 847, in _generate_added_field
+    field.default = self.questioner.ask_not_null_addition(field_name, model_name)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\migrations\questioner.py", l
+ine 165, in ask_not_null_addition
+    return self._ask_default()
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\migrations\questioner.py", l
+ine 134, in _ask_default
+    code = input(prompt)
+EOFError
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/dojoninjas
+$ python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojos without a default; we can't do that (the databa
+se needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "no value"
+Migrations for 'dojo_ninjas':
+  apps\dojo_ninjas\migrations\0002_dojos_desc.py
+    - Add field desc to dojos
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/dojoninjas
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas, sessions
+Running migrations:
+  Applying dojo_ninjas.0002_dojos_desc... OK
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/dojoninjas
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.dojo_ninjas.models import *
+>>> print(Dojos.objects.all())
+<QuerySet [<Dojo object: CodingDojo Silicon Valley Mountain View CA>, <Dojo object: CodingDojo Seattle Seattle WA>, <Dojo object: CodingDojo New York New York NY>]>
+>>>
+

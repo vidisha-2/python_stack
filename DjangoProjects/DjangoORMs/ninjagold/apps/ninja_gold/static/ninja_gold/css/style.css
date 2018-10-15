@@ -1,0 +1,79 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	height:1000px;
+	/*width:1000px;*/
+	margin: 0 auto;
+	margin-top: -20px;
+	padding:70px;
+	background-color: #ffc107;
+}
+.h1, h1 {
+    font-size: 50px;
+    text-align: center;
+    font-family: monospace;
+}
+
+.box {
+	height: 280px;
+    width: 280px;
+    display: inline-block;
+    outline-color: black;
+    background-color: beige;
+    margin: 10px;
+    vertical-align: top;
+    margin-left: 167px;
+}
+
+#activity-box {
+	background-color: beige;
+    height: 280px;
+    width: 1696px;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+
+#gold-value-box {
+    display: inline-block;
+    background-color: beige;
+    height: 40px;
+    width: 100px;
+    margin-left: 20px;
+    margin-bottom: -12px;
+}
+
+#wrapper {
+	    display: block;
+    padding: 20px;
+}
+.h3, h3 {
+    font-size: 24px;
+   display: inline-block;
+    margin-top: 38px;
+    margin-left: 40px;
+        font-family: monospace;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-left: 83px;
+    margin-top: 90px;
+}
+
+p {
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.h4, h4 {
+    font-size: 28px;
+    margin-left: 153px;
+    margin-top: 56px;
+    margin-bottom: -40px;
+        font-family: monospace;
+}

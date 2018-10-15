@@ -1,0 +1,46 @@
+<html>
+ <head>
+    	<!-- Latest compiled and minified CSS -->
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'session_words/css/style.css' %}">
+       <title>Session Words</title>
+ </head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <form action='/add' method='post'>
+                {% csrf_token %}
+                <h2>Add a new word</h2>
+                <input type="text" name="enter_here">
+                <label for="color">Choose color</label><br>
+                <div class="radio">
+                <input type="hidden" name="color" value="black">
+                <input type="radio" name="color" value="red"><h5>Red</h5></div>
+                <div class="radio"><input type="radio" name="color" value="green"><h5>Green</h5></div>
+                <div class="radio"><input type="radio" name="color" value="blue"><h5>Blue</h5><br></div>
+                <input type="hidden" name="big_font" value="20px">
+                <input type="checkbox" name="big_font" value="40px"><label for="big">show in BIG fonts!</label><br>
+                <input type="submit" name="click_to_add" value="Add to Session">
+            </form>
+        </div>
+        <div class="right-panel">
+            <form action='/clear' method='post'>
+                {% csrf_token %}
+                <input type="submit" name="click_to_clear" value="clear_session">
+                <div class="display_box">
+                    {% for key in request.session.enter_here %}
+                    <p><span style='color: {{ key.color }}; font-size: {{ key.show_big }};'>{{ key.enter_here }}</span> - added at {{ key.time }}</p>
+                    {% endfor %}
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

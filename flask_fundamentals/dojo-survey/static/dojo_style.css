@@ -1,0 +1,29 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.form__container {
+	height:500px;
+	width:600px;
+	margin: 0 auto;
+	background-color: lightblue;
+}
+.text-uppercase {
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 24px;
+}
+.row {
+    margin-right: 0px;
+    margin-left: 15px;
+}
+
+
+p {
+    margin: 0 19px 10px;
+    font-weight: bold;
+}

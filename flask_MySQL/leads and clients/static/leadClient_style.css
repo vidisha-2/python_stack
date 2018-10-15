@@ -1,0 +1,16 @@
+*{
+	margin:0;
+}
+
+#container {
+    
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #e3d7d7;
+    padding:20px;
+}
+
+.h2, h2 {
+    font-size: 2rem;
+    text-decoration-line: underline;
+}

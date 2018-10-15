@@ -1,0 +1,32 @@
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.users.models import *
+>>> User.objects.first()
+<User object: Albert Einstein alberteinstein@gmail.com 20>
+>>> User.objects.order_by(first_name DESC)
+  File "<console>", line 1
+    User.objects.order_by(first_name DESC)
+                                        ^
+SyntaxError: invalid syntax
+>>> User.objects.order_by(first_name)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'first_name' is not defined
+>>> User.objects.order_by('-first_name')
+<QuerySet [<User object: Thomas Edison thomasedison@gmail.com 23>, <User object: Charles Darwin charlesdarwin@gmail.com 21>, <User object: Albert Einstein alberteinstein@gmail.com 20>]>
+>>> User.objects.get(id=3)
+<User object: Thomas Edison thomasedison@gmail.com 23>
+>>> lastname_to_update = User.objects.get(id=3)
+>>> lastname_to_update.last_name = "Desilva"
+>>> lastname_to_update.save()
+>>> User.objects.get(id=3)
+<User object: Thomas Desilva thomasedison@gmail.com 23>
+>>> record_to_delete = User.objects.get(id=2)
+>>> record_to_delete.delete()
+(1, {'users.User': 1})
+>>> all_user = User.objects.all()
+>>> print(all_user)
+<QuerySet [<User object: Albert Einstein alberteinstein@gmail.com 20>, <User object: Thomas Desilva thomasedison@gmail.com 23>]>
+>>>

@@ -1,0 +1,52 @@
+<html>
+ <head>
+    	<!-- Latest compiled and minified CSS -->
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'courses/css/style.css' %}">
+       <title>Add a student to all bootcamp courses</title>
+ </head>
+ <body>
+        <div class="container">
+          <h2>Add a new course</h2>
+          <form action='/courses/create', method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="coursename">Name:</label>
+              <input type="text" class="form-control" id="course_name" name="course_name">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="textarea"></textarea>
+            </div>
+            <input type="submit" value="Add">
+          </form>
+          <br>
+          <h2>Courses</h2>
+          <table class="table table-bordered table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Courses Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date Added</th>
+                <th scope="col">Actions</th>
+            </thead>
+              <tbody>
+              {% for d in descriptions %}
+                <tr>
+                  <th scope="row">{{ d.course.name}}</th>
+                  <td>{{ d.desc }}</td>
+                  <td>{{ d.course.date_added }}</td>
+                  <td><a href="/show/{{ d.course.id }}">remove</a></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        </div>
+ </body>
+ </html>

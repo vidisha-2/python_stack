@@ -1,0 +1,29 @@
+<html>
+ <head>
+    	<!-- Latest compiled and minified CSS -->
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'restful_users/css/style.css' %}">
+       <title>Users Show</title>
+ </head>
+ <body>
+   <div class="container">
+     <h2>User {{user.id}}</h2>
+     <ul>
+       <li>Full Name: {{ user.first_name }} {{ user.last_name}}</li>
+       <li>Email: {{user.email}}</li>
+       <li>Created at: {{ user.created_at }}</li>
+     </ul>
+     <form action="/restful_users/{{user.id}}", method="post">
+      {% csrf_token %}
+      <a href="/restful_users/edit/{{user.id}}">Edit</a>
+      <a href="/restful_users/delete/{{user.id}}">Delete</a>
+     </form>
+   </div>
+ </body>
+ </html>

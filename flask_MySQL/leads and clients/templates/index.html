@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Leads and Clients~~</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='leadClient_style.css') }}">
+  <script type="text/javascript">
+	window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer",
+	{
+		theme: "theme2",
+		title:{
+			text: "Customers and number_of_leads"
+		},		
+		data: [
+			{       
+				type: "pie",
+				showInLegend: true,
+				// yValueFormatString: "#,##0,,.## Million",
+				// legendText: "{indexLabel}",
+				toolTipContent: "{y} (#percent%)",
+				dataPoints: [
+					{% for values in clientsandleads %}
+					{ y:{{values['number_of_leads']}}, label: '{{values['first_name']}}' },					
+					{% endfor %}
+
+					]
+
+			}
+		]
+	});
+	chart.render();
+}
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<form action='/update' method='post' style="float:right;"">
+				<div>
+			        <label for="start">Start</label>
+			        <input type="date" id="start" name="start_date"
+			               value="2018-07-22"
+			               min="2010-01-01" max="2012-12-31" />
+			    </div>
+
+			    <div>
+			        <label for="end">End</label>
+			        <input type="date" id="end" name="end_date"
+			               value="2018-07-29"
+			               min="2010-01-01" max="2012-12-31"/ >
+			    </div>
+			    <input type="submit" value="Update">
+			</form>
+		</div>
+		<h2>List of all customers And # of leads</h2>
+
+		<table class="table table-striped">
+			<thead>
+				<th scope="col">First Name</th>
+				<th scope="col">Last Name</th>
+				<th scope="col">Number Of Leads</th>
+			</thead>
+		{% for values in clientsandleads %}
+			<tr>
+				<td>{{values['first_name']}}</td>
+				<td>{{values['last_name']}}</td>
+				<td>{{values['number_of_leads']}}</td>
+			</tr>
+		{% endfor %}
+		</table>
+		<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+	</div>
+</body>
+</html>

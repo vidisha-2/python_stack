@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Word</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'random_word/css/style.css' %}">
+</head>
+
+<body>
+		<div class="container">
+			<h2 style="text-align: center;">Random word (attempt {{ request.session.visit }})</h2>
+			<div class="wordbox">
+				<h3>{{rand_number}}</h3>
+			</div>
+			<form action="/random_word/increment" method="post">
+				{% csrf_token %}
+				<input type="submit", value="Generate">
+			</form>
+		</div>
+</body>
+</html>

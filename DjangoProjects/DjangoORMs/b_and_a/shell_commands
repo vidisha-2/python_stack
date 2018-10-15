@@ -1,0 +1,170 @@
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.book_authors.models import *
+>>> book1 = Book.objects.create(name="C Sharp", desc="fhgfhghjghgfhghjgfhgghgygeyhgalegjhbhgrughg hgfhjgh
+j jhgfhjg gjdgfjfgjhdgfdjgurg")
+>>> book2 = Book.objects.create(name="Java", desc="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+>>> book3 = Book.objects.create(name="Python", desc="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
+>>> book4 = Book.objects.create(name="PHP", desc="ccccccccccccccccccccccccccccccccc")
+>>> book5 = Book.objects.create(name="Ruby", desc="ddddddddddddddddddddddddddddddddddddd")
+>>> author1 = Author.objects.create(first_name="Mike", last_name="seth", email="mike.seth@gmail.com")
+>>> author2 = Author.objects.create(first_name="Speros", last_name="marty", email="speros.marty@gmail.com
+")
+>>> author3 = Author.objects.create(first_name="John", last_name="Snow", email="john.snow@gmail.com")
+>>> author4 = Author.objects.create(first_name="Jade", last_name="Mark", email="jade.mark@gmail.com")
+>>> author5 = Author.objects.create(first_name="Jay", last_name="Simpson", email="jaysimp123@gmail.com")
+>>> ^Z
+
+now exiting InteractiveConsole...
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/b_and_a
+$ python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the dat
+abase needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "no value"
+Migrations for 'book_authors':
+  apps\book_authors\migrations\0002_author_notes.py
+    - Add field notes to author
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/b_and_a
+$ python manage.py makemigrations
+No changes detected
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/b_and_a
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, book_authors, contenttypes, sessions
+Running migrations:
+  Applying book_authors.0002_author_notes... OK
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/b_and_a
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.book_authors.models import *
+>>> change_name = Book.objects.get(id=5)
+>>> print(change_name)
+Book object
+>>> print(change_name.name)
+Ruby
+>>> change_name.name = "C#"
+>>> change_name.save()
+>>> change_author_name = Author.objects.get(id=5)
+>>> print(change_author_name)
+Author object
+>>> print(change_author_name.first_name)
+Jay
+>>> change_author_name.first_name = "Ketul"
+>>> change_author_name.save()
+>>> this_book = Book.objects.get(id=1)
+>>> this_author = Author.objects.get(id=1)
+>>> this_author.add(this_book)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Author' object has no attribute 'add'
+>>> this_book.add(this_author)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Book' object has no attribute 'add'
+>>> this_author.books.add(this_book)
+>>> this_book = Book.objects.get(id=2)
+>>> this_author = Author.objects.get(id=1)
+>>> this_author.books.add(this_book)
+>>> book1 = Book.objects.get(id=1)
+>>> book2= Book.objects.get(id=2)
+>>> author2 = Author.objects.get(id=2)
+>>> author2.books.add(book1,book2)
+>>> book3= Book.objects.get(id=3)
+>>> author2.books.add(book3)
+>>> author3 = Author.objects.get(id=3)
+>>> book4= Book.objects.get(id=4)
+>>> author3.books.add(book1,book2,book3,book4)
+>>> author4 = Author.objects.get(id=4)
+>>> book5= Book.objects.get(id=5)
+>>> author4.books.add(book1,book2,book3,book4,book5)
+>>> this_book3 = Book.objects.get(id=3)
+>>> print(this_book3.name)
+Python
+>>> author_names = Author.objects.filter(books=Book.objects.get(id=3))
+>>> print(author_names.first_name)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> print(author_names)
+<QuerySet [<Author object: Speros marty speros.marty@gmail.com no value>, <Author object: John Snow john
+.snow@gmail.com no value>, <Author object: Jade Mark jade.mark@gmail.com no value>]>
+>>> to_remove = Author.obects.get(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Author' has no attribute 'obects'
+>>> to_remove = Author.objects.get(id=2)
+>>> from_book = Book.objects.get(id=3)
+>>> from_book.remove(to_remove)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Book' object has no attribute 'remove'
+>>> from_book.authors.remove(to_remove)
+>>> author_names = Author.objects.filter(books=Book.objects.get(id=3))
+>>> print(author_names)
+<QuerySet [<Author object: John Snow john.snow@gmail.com no value>, <Author object: Jade Mark jade.mark@
+gmail.com no value>]>
+>>> this_book = Book.objects.get(id=2)
+>>> this_author = Author.objects.get(id=5)
+>>> this_author.books.add(this_book)
+>>> this_author = Author.objects.get(id=3)
+>>> all_books = Books.objects.filter(authors=Author.objects.get(id=3))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Books' is not defined
+>>> all_books = Book.objects.filter(authors=Author.objects.get(id=3))
+>>> print(all_books)
+<QuerySet [<Book object: C Sharp fhgfhghjghgfhghjgfhgghgygeyhgalegjhbhgrughg hgfhjghj jhgfhjg gjdgfjfgjh
+dgfdjgurg>, <Book object: Java aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>, <Book object: Python bbbbbbbbbbb
+bbbbbbbbbbbbbbbbbbbbbbbbbb>, <Book object: PHP ccccccccccccccccccccccccccccccccc>]>
+>>> all_books = Book.objects.filter(authors=Author.objects.get(id=2))
+>>> print(all_books)
+<QuerySet [<Book object: C Sharp fhgfhghjghgfhghjgfhgghgygeyhgalegjhbhgrughg hgfhjghj jhgfhjg gjdgfjfgjh
+dgfdjgurg>, <Book object: Java aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>]>
+>>> print(all_books.name)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> Book.objects.filter(authors=Author.objects.get(id=2))
+<QuerySet [<Book object: C Sharp fhgfhghjghgfhghjgfhgghgygeyhgalegjhbhgrughg hgfhjghj jhgfhjg gjdgfjfgjh
+dgfdjgurg>, <Book object: Java aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa>]>
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).first().name
+'C Sharp'
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).all().name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).values('name)
+  File "<console>", line 1
+    Book.objects.filter(authors=Author.objects.get(id=2)).values('name)
+                                                                      ^
+SyntaxError: EOL while scanning string literal
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).values('name')
+<QuerySet [{'name': 'C Sharp'}, {'name': 'Java'}]>
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).values('name').all()
+<QuerySet [{'name': 'C Sharp'}, {'name': 'Java'}]>
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).values('name').all().name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).values('name')
+<QuerySet [{'name': 'C Sharp'}, {'name': 'Java'}]>
+>>> Book.objects.filter(authors=Author.objects.get(id=2)).values('name')

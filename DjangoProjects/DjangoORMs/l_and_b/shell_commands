@@ -1,0 +1,372 @@
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.book_likes.models import *
+>>> User.objects.create(first_name="Louisa", last_name="May", email="louisa.may@gmail.com")
+<User object: Louisa May louisa.may@gmail.com>
+>>> User.objects.create(first_name="Harry", last_name="Potter", email="harry.potter@yahoo.com")
+<User object: Harry Potter harry.potter@yahoo.com>
+>>> User.objects.create(first_name="Tom", last_name="Peter", email="tompete1234@aol.com")
+<User object: Tom Peter tompete1234@aol.com>
+>>> book1=Book.ojbects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Book' has no attribute 'ojbects'
+>>> book1=Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu")
+Traceback (most recent call last):
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 39
+3, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 806
+, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 836
+, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 922
+, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 961
+, in _do_insert
+    using=using, raw=raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 10
+60, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\sql\compiler.py",
+line 1099, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+80, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\utils.py", line 94, in __
+exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\utils\six.py", line 685, in
+reraise
+    raise value.with_traceback(tb)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+>>> Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu")
+Traceback (most recent call last):
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 39
+3, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 806
+, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 836
+, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 922
+, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 961
+, in _do_insert
+    using=using, raw=raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 10
+60, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\sql\compiler.py",
+line 1099, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+80, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\utils.py", line 94, in __
+exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\utils\six.py", line 685, in
+reraise
+    raise value.with_traceback(tb)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+>>> Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu").uploaded_by.add(User
+=User.objects.get(id=1)
+...
+... ^Z
+
+now exiting InteractiveConsole...
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/l_and_b
+$ python manage.py makemigrations
+No changes detected
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/l_and_b
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, book_likes, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+(djEnv)
+User@DESKTOP-GIIT1HV MINGW64 /c/dojo/python_stack/DjangoProjects/DjangoORMs/l_and_b
+$ python manage.py shell
+Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:04:45) [MSC v.1900 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.book_likes.models import *
+>>> Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu").uploaded_by.add(User
+
+... Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu").uploaded_by.add(User
+=User.objects.get(id=1)
+  File "<console>", line 2
+    Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu").uploaded_by.add(User
+=User.objects.get(id=1)
+       ^
+SyntaxError: invalid syntax
+>>> Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu").uploaded_by.add(User
+=User.objects.get(id=1))
+Traceback (most recent call last):
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 39
+3, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 806
+, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 836
+, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 922
+, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 961
+, in _do_insert
+    using=using, raw=raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 10
+60, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\sql\compiler.py",
+line 1099, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+80, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\utils.py", line 94, in __
+exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\utils\six.py", line 685, in
+reraise
+    raise value.with_traceback(tb)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+>>> User.objects.get(id=1).books_uploaded.add(Book.objects.create(name="Rabindranath Tagore", desc="jkh
+fjkhfkjsh wueieieiu"))
+Traceback (most recent call last):
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 39
+3, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 806
+, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 836
+, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 922
+, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\base.py", line 961
+, in _do_insert
+    using=using, raw=raw)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 10
+60, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\sql\compiler.py",
+line 1099, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+80, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line 65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\utils.py", line 94, in __
+exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\utils\six.py", line 685, in
+reraise
+    raise value.with_traceback(tb)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\utils.py", line
+65, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\backends\sqlite3\base.py"
+, line 328, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: book_likes_book.uploaded_by_id
+>>> Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by="User.ob
+jects.get(id=1)")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\manager.py", line
+85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\dojo\python_stack\myEnvironments\djEnv\lib\site-packages\django\db\models\query.py", line 39
+1, in create
+    obj = self.model(**kwargs)
+  FiBook.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.obj
+ects.get(id=1))^Z
+  File "<console>", line 1ame, rel_obj)
+    Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.obj
+ects.get(id=1))ne 216, in __set__
+
+               ^ot assign "'User.objects.get(id=1)'": "Book.uploaded_by" must be a "User" instance.
+SyntaxError: invalid syntaxe="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.obj
+>>> Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.obj
+ects.get(id=1))^Z^Zdranath Tagore jkhfjkhfkjsh wueieieiu>
+  File "<console>", line 1me="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.obj
+    Book.objects.create(name="Rabindranath Tagore", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.obj
+ects.get(id=1))
+
+               ^
+SyntaxError: invalid syntax
+>>> Book.objects.create(name="Two States", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.objects.get(
+id=1))
+<User object: Two States jkhfjkhfkjsh wueieieiu>
+>>> Book.objects.create(name="Love Stories", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.objects.ge
+t(id=2))
+<User object: Love Stories jkhfjkhfkjsh wueieieiu>
+>>> Book.objects.create(name="Atebu", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.objects.get(id=2)
+)
+<User object: Atebu jkhfjkhfkjsh wueieieiu>
+>>> Book.objects.create(name="Qbeca", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=User.objects.get(id=3)
+)
+<User object: Qbeca jkhfjkhfkjsh wueieieiu>
+>>> Book.objects.create(name="Biography of Mahatma Gandhi", desc="jkhfjkhfkjsh wueieieiu", uploaded_by=
+User.objects.get(id=3))
+<User object: Biography of Mahatma Gandhi jkhfjkhfkjsh wueieieiu>
+>>> book1= Book.objects.first()
+>>> book2= Book.objects.last()
+>>> this_user= User.objects.get(id=1)
+>>> this_user.liked_books.add(book1,book2)
+>>> book3= Book.objects.get(id=3)
+>>> user2= User.objects.get(id=2)
+>>> user2.liked_books.add(book1,book3)
+>>> book4= Book.objects.get(id=4)
+>>> book5= Book.objects.get(id=5)
+>>> book6= Book.objects.get(id=6)
+>>> user3= User.objects.get(id=3)
+>>> user3.liked_books.add(book1,book2,book3,book4,book5,book6)
+>>> book = Book.objects.get(id=1)
+>>> book.liked_by.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Book' object has no attribute 'liked_by'
+>>> book.users_who_like.all()
+<QuerySet [<User object: Louisa May louisa.may@gmail.com>, <User object: Harry Potter harry.potter@yahoo.com>, <User object: Tom Peter tompete1234@aol.com>]>
+>>> book = Book.objects.get(id=1)
+>>>
+    book = Book.objects.get(id=2)
+>>> book.users_who_like.all()
+<QuerySet []>
+>>> User.objects.first().books_uploaded
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x01105EF0>
+>>> Book.objects.first().uploaded_by
+<User object: Louisa May louisa.may@gmail.com>
+>>> Book.objects.get(id=2).uploaded_by
+<User object: Louisa May louisa.may@gmail.com>
+>>>
+

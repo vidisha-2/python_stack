@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title></title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <form action='/create_user' method='post'>
+      <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">First and last name</span>
+          </div>
+          <input type="text" class="form-control" name="first_name" value="first_name">
+          <input type="text" class="form-control" name="last_name" value="last_name">
+      </div>
+      <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">Occupation</span>
+          </div>
+          <input type="text" class="form-control" name="occupation">
+          <input type='submit' value='add'>Add a friend
+          
+      </div>  
+    </form>
+</body>
+</html>

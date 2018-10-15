@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	height:800px;
+	width:1000px;
+	margin: 0 auto;
+	margin-top: -20px;
+	padding:70px;
+	background-color: lightblue;
+}
+
+
+.h1, h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.h3, h3 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.h4, h4 {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+input.form-control {
+    width: 200px;
+    margin-left: 330px;
+    margin-top: 50px;
+}
+#box {
+	background-color: orange;
+    width: 200;
+    height: 200;
+    margin-left: 333px;
+    margin-top: 35px;
+}

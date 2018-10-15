@@ -1,0 +1,29 @@
+*{
+	margin:0;
+}
+
+#container {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    background-color: #7fb7be;
+    padding: 20px;
+}
+
+.h2, h2 {
+    font-size: 2rem;
+    
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 50px;
+}

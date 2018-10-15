@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Success~~</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<!--   <link rel="stylesheet" href="{{ url_for('static', filename='login_register_style.css') }}"> -->
+	<style>
+#container{
+	
+	width:1200px;
+	padding:40px;
+	
+}
+
+.success{
+	color:blue;
+}
+	</style>
+ </head>
+ <body>
+ 		<div id="container">
+ 			<h1>Welcome! you are logged in!</h1>
+ 			<div id="">
+ 				{% with messages = get_flashed_messages(category_filter=['success']) %}
+						    {% if messages %}
+						      {% for message in messages %}
+						        <p class="success">{{message}}</p>
+						      {% endfor %}
+						    {% endif %}
+						  {% endwith %}
+			</div>
+ 		</div>
+ </body>
+ </html>

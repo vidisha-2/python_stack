@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Basic Validation Example</title>
+</head>
+<body>
+  <h1>Enter a Valid(Any) Name!</h1>
+   {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form action='/process', method='post'>
+      <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email">
+      </div>
+      <div class="form-group">
+           <label for="usr">First Name:</label>
+            <input type="text" class="form-control" id="usr" name="first_name">
+       </div>
+       <div class="form-group">
+           <label for="usr">Last Name:</label>
+            <input type="text" class="form-control" id="usr" name="last_name">
+       </div>
+        <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="pwd" name="password">
+      </div>
+      <div class="form-group">
+              <label for="pwd">Confirm Password:</label>
+              <input type="password" class="form-control" id="pwd" name="password">
+      </div>
+      <input type='submit' value='Submit'>
+  </form>
+</body>
+</html>
