@@ -5,16 +5,16 @@ from django.db import models
 class CourseManager(models.Manager):
 	def basic_validator(self, postData):
 		errors={}
-		if len(postData['name']) < 5:
-			errors['name'] = "Course name should be at least more than 5 characters"
-		# if len(postData['desc']) < 15:
-		# 	errors['desc'] = "Description Field should be at least more than 15 characters"
+		if len(postData['course_name']) < 5:
+			errors['course_name'] = "Course name should be at least more than 5 characters"
+		if len(postData['desc']) < 15:
+			errors['desc'] = "Description Field should be at least more than 15 characters"
 		return errors
 
 class Course(models.Model):
 	name = models.CharField(max_length=255)
 	date_added = models.DateTimeField(auto_now_add=True)
-	# objects = CourseManager()
+	objects = CourseManager()
 
 	def __str__(self):
 		return f'{self.name}, {self.date_added}'

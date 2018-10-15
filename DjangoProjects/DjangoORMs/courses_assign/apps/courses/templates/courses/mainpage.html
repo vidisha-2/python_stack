@@ -15,6 +15,9 @@
         <div class="container">
           <h2>Add a new course</h2>
           <form action='/courses/create', method='post'>
+              {% for message in messages %}
+              <p style="color:red;">{{ message }}</p>
+              {% endfor %}
             {% csrf_token %}
             <div class="form-group">
               <label for="coursename">Name:</label>
@@ -42,7 +45,7 @@
                   <th scope="row">{{ d.course.name}}</th>
                   <td>{{ d.desc }}</td>
                   <td>{{ d.course.date_added }}</td>
-                  <td><a href="/show/{{ d.course.id }}">remove</a></td>
+                  <td><a href="/destroy/{{d.course_id}}">remove</a></td>
                 </tr>
               {% endfor %}
               </tbody>
