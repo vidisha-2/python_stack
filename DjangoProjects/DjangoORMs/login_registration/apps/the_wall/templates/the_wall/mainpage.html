@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	 <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  <title>My wall~~</title>
+</head>
+<body>
+		<div id="container">
+			<div id="header">
+				<h2>My Wall</h2>
+				<div id="side-head">
+					<p style="display: inline; margin-right:5px;">Welcome {{ request.session.first_name}}</p>
+					<a href="/" style="display: inline;">logout</a>
+				</div>
+			</div>
+			<div id="body">
+				<div id="display-wall">
+					<h4 style="display:inline-block;">{{msg_count}} Messages for you {{request.session.first_name}}</h4>
+						
+						{% for friend in myfriends %}
+						<div id="msg-box">
+							<h3>{{ friend['first_name'] }} {{ friend['created_at'] }}</h3>
+							<p>{{ friend['content'] }} </p>
+							<a style="display:inline-block;" href="/delete/{{ friend['m_id'] }}"><img style="height:20px; width:20px; display: inline-block;" src="https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/garbage-can-recycle-bin-512.png" alt="delete_img" ></a>
+						</div>
+						{% endfor %}
+					
+				</div>
+
+				<div id="post-wall">
+					<h4 style="text-decoration: underline;">Send a Message</h4>
+					<p>You have sent a total of {{totalmessages}} messages so far</p>
+				{% for ms in messages_from %}
+					<form action='/create_message', method='post' class="form-group">
+						{{ ms['first_name'] }}<textarea name="message"></textarea>
+						<input type="hidden" name="recepient_id" value="{{ ms['id'] }}">
+						<input type="submit" name="send" value="send">
+					</form>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+</body>
+</html>
