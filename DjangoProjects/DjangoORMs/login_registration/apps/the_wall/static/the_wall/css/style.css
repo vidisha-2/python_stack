@@ -13,30 +13,31 @@
 
 .header h2{
 	display:inline-block;
+        color: deepskyblue;
 }
 
-#side-head{
+.side-head{
 	display: inline-block;
 	float: right;
+    margin-top:38px;
 }
-#side-head a{
+.side-head a{
 	float:right;
 }
 
-#body{
+.body{
 
 }
 
-#display-wall {
+.display-wall {
     display: inline-block;
-    height: 500px;
-    width: 436px;
-    background-color: aqua;
+    width: 970px;
+    background-color: #242323;
     vertical-align: top;
     padding: 20px;
 }
 
-#post-wall {
+.post-wall {
     display: inline-block;
     background-color: gold;
     width: 526px;
@@ -44,23 +45,38 @@
     height: 500px;
  }
 
- #display-wall p{
+ .display-wall p{
 
  	margin-top: 0;
     margin-bottom: 1rem;
     margin-left: 20px;
     display: inline-block;
+    font-size: 20px;
  }
  .h3, h3 {
-    font-size: 0.75rem;
+ font-size: 1.2rem;
+    margin-top: 45px;
+    margin-bottom: -1px;
 }
-textarea {
-    overflow: auto;
-    margin-left: 20px;
+.form-group {
+    margin-bottom: 15px;
+    margin-right: 2px;
 }
+
 input [type=submit], button, html [type=button] {
     -webkit-appearance: button;
     border-radius: 8px;
     width: 64px;
     background-color: #CDDC39;
+}
+
+input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    float: right;
+    margin-top: -14px;
+}
+
+h4 {
+    font-size: 22px;
 }
